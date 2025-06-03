@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solus - Your Mental Wellness Journey</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Color System:
+         * Primary: #059669 (Emerald-600) - Trust, growth, healing
+         * Secondary: #0f172a (Slate-900) - Professionalism, stability
+         * Accent: #f97316 (Orange-500) - Energy, call-to-action
+         * Neutral: #f8fafc (Slate-50) - Clean, calming background
+         * Text: #334155 (Slate-700) - Readable, accessible
+         */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #059669;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #059669;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #334155;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: #059669;
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            background: #059669;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-illustration {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+            display: grid;
+            gap: 2rem;
+        }
+
+        /* Service Cards */
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card.primary {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+        }
+
+        .service-card.dark {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card:not(.primary):not(.dark) .service-icon {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .service-button {
+            background: rgba(255,255,255,0.2);
+            color: inherit;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:not(.primary):not(.dark) .service-button {
+            background: #059669;
+            color: white;
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Path to Wellbeing Section */
+        .wellbeing-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .wellbeing-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .wellbeing-section p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .wellbeing-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .wellbeing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .wellbeing-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .wellbeing-card .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .wellbeing-card:nth-child(1) .icon {
+            background: #fef3c7;
+            color: #f59e0b;
+        }
+
+        .wellbeing-card:nth-child(2) .icon {
+            background: #fed7c7;
+            color: #f97316;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #f1f5f9;
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-card.featured {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+        }
+
+        .stars {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+
+        .testimonial-card.featured .stars {
+            color: #fcd34d;
+        }
+
+        .testimonial-text {
+            margin-bottom: 1rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Resources Section */
+        .resources {
+            padding: 4rem 0;
+        }
+
+        .resources-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .resources h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .resources p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .resource-card h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .resource-card p {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .resource-button {
+            background: #f97316;
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .resource-button:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+        }
+
+        /* Support Section */
+        .support-section {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .support-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .support-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .support-text h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .support-text p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .support-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .support-illustration {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 4rem 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #64748b;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section > p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #059669;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: #059669;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .contact-details strong {
+            color: #334155;
+        }
+
+        .contact-form {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #059669;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #059669;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-button:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .form-note i {
+            color: #059669;
+        }
+
+        .emergency-notice {
+            background: linear-gradient(135deg, #fef3c7, #fed7c7);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .emergency-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .emergency-content i {
+            font-size: 2rem;
+            color: #f59e0b;
+            flex-shrink: 0;
+        }
+
+        .emergency-content h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-content p {
+            color: #92400e;
+            margin: 0;
+        }
+
+        .emergency-content strong {
+            color: #78350f;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #059669;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 1rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-illustration {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+
+            .service-row,
+            .wellbeing-cards,
+            .testimonials-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .support-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .support-text h2,
+            .support-text p {
+                text-align: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .emergency-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .service-card,
+            .wellbeing-card,
+            .testimonial-card,
+            .resource-card {
+                padding: 1.5rem;
+            }
+
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .contact-form h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tablet Responsive (MD Breakpoint) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-container {
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Solus</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    Support for Your
+                    <span class="highlight">Mental Well-being</span>
+                </h1>
+                <p>Discover tools and resources to support your mental health journey with professional guidance and community support.</p>
+                <a href="#services" class="cta-button">Start Your Journey</a>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-illustration">
+                    🌱
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="content-grid">
+        <!-- Service Cards Row 1 -->
+        <div class="service-row">
+            <div class="service-card primary">
+                <div class="service-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>We Help You Prioritize Your Mental Health</h3>
+                <p>Professional support and evidence-based approaches to help you navigate life's challenges with confidence and resilience.</p>
+                <button class="service-button">Find Your Therapist</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Comprehensive Assessment</h3>
+                <p>Get a thorough understanding of your mental health status with our comprehensive evaluation tools and professional insights.</p>
+                <button class="service-button">Take Assessment</button>
+            </div>
+        </div>
+
+        <!-- Wellbeing Section -->
+        <div class="wellbeing-section">
+            <h2>Your Path to Well-being</h2>
+            <p>Comprehensive mental health services designed to meet you where you are in your journey toward wellness and growth.</p>
+            
+            <div class="wellbeing-cards">
+                <div class="wellbeing-card">
+                    <div class="icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Mindfulness & Meditation</h3>
+                    <p>Guided practices to reduce stress and improve emotional regulation through mindful awareness.</p>
+                </div>
+                <div class="wellbeing-card">
+                    <div class="icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>One-on-One Therapy</h3>
+                    <p>Personalized sessions with licensed mental health professionals tailored to your needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wellness Coaching -->
+        <div class="service-card dark">
+            <div class="support-content">
+                <div class="support-text">
+                    <h2>Wellness Coaching</h2>
+                    <p>Work with certified wellness coaches to develop sustainable habits and create lasting positive changes in your daily life.</p>
+                    <button class="service-button">Book a Session</button>
+                </div>
+                <div class="support-visual">
+                    <div class="support-illustration">
+                        🧘‍♀️
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2>What Our Clients Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The mindfulness sessions have completely transformed how I handle stress. I feel more centered and confident."</p>
+                    <p class="testimonial-author">— Sarah M.</p>
+                </div>
+                <div class="testimonial-card featured">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"My therapist helped me develop coping strategies that actually work. I'm grateful for this supportive community."</p>
+                    <p class="testimonial-author">— Marcus L.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The wellness coaching program gave me the tools I needed to build healthy habits that stick."</p>
+                    <p class="testimonial-author">— Jennifer K.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources">
+        <div class="resources-container">
+            <h2>Resources for Your Well-being</h2>
+            <p>Access a comprehensive library of tools, guides, and materials to support your mental health journey.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Articles & Guides</h3>
+                    <p>Evidence-based articles and comprehensive guides on various mental health topics written by professionals.</p>
+                    <button class="resource-button">Explore</button>
+                </div>
+                <div class="resource-card">
+                    <h3>Meditation & Relaxation</h3>
+                    <p>Guided meditation sessions, breathing exercises, and relaxation techniques for daily practice.</p>
+                    <button class="resource-button">Listen Now</button>
+                </div>
+                <div class="resource-card">
+                    <h3>Wellness & Self-Care</h3>
+                    <p>Practical tips and strategies for maintaining mental wellness and developing self-care routines.</p>
+                    <button class="resource-button">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="support-container">
+            <div class="support-content">
+                <div class="support-text">
+                    <h2>You're Not Alone on This Journey</h2>
+                    <p>Connect with others who understand your experience and find strength in our supportive community of individuals committed to mental wellness.</p>
+                    <a href="#community" class="cta-button">Join Our Community</a>
+                </div>
+                <div class="support-visual">
+                    <div class="support-illustration">
+                        🤝
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(0)">
+                    How do I book a therapy session?
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="faq-answer" id="faq-0">
+                    You can book a therapy session through our online platform by selecting your preferred therapist and available time slots. We'll match you with the best professional for your needs.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(1)">
+                    Are online sessions as effective as in-person?
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="faq-answer" id="faq-1">
+                    Research shows that online therapy can be just as effective as in-person sessions for many mental health conditions. Our platform ensures a secure, private environment for your sessions.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(2)">
+                    What types of therapy do you offer?
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="faq-answer" id="faq-2">
+                    We offer various evidence-based therapeutic approaches including CBT, DBT, mindfulness-based therapy, and solution-focused brief therapy, tailored to your specific needs.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(3)">
+                    How much do your services cost?
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="faq-answer" id="faq-3">
+                    Our pricing varies based on the type of service. We offer flexible payment options and work with many insurance providers. Contact us for detailed pricing information.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(4)">
+                    Is my information kept confidential?
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="faq-answer" id="faq-4">
+                    Absolutely. We follow strict HIPAA guidelines and use encrypted, secure platforms to ensure your privacy and confidentiality are always protected.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2>We're Here to Support You</h2>
+            <p>Ready to begin your mental wellness journey? Get in touch with our compassionate team today.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Visit Us</h4>
+                            <p>123 Wellness Avenue<br>
+                            Mental Health District<br>
+                            Nairobi, Kenya 00100</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p><strong>Main Line:</strong> +254 700 123 456<br>
+                            <strong>Crisis Support:</strong> +254 700 999 000<br>
+                            <strong>24/7 Helpline:</strong> +254 800 SOLUS (76587)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <p><strong>General:</strong> hello@solus.ke<br>
+                            <strong>Support:</strong> support@solus.ke<br>
+                            <strong>Appointments:</strong> book@solus.ke</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Office Hours</h4>
+                            <p><strong>Monday - Friday:</strong> 8:00 AM - 8:00 PM<br>
+                            <strong>Saturday:</strong> 9:00 AM - 5:00 PM<br>
+                            <strong>Sunday:</strong> Emergency Support Only</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form class="message-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interest</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="individual-therapy">Individual Therapy</option>
+                                <option value="group-sessions">Group Sessions</option>
+                                <option value="wellness-coaching">Wellness Coaching</option>
+                                <option value="crisis-support">Crisis Support</option>
+                                <option value="general-inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us how we can support you..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                        
+                        <p class="form-note">
+                            <i class="fas fa-shield-alt"></i>
+                            Your information is confidential and secure. We'll respond within 24 hours.
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="emergency-notice">
+                <div class="emergency-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <h4>Crisis Support Available</h4>
+                        <p>If you're experiencing a mental health emergency, please call our 24/7 crisis line at <strong>+254 800 CRISIS</strong> or contact emergency services at <strong>999</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Individual Therapy</a></li>
+                        <li><a href="#">Group Sessions</a></li>
+                        <li><a href="#">Wellness Coaching</a></li>
+                        <li><a href="#">Crisis Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Meditation</a></li>
+                        <li><a href="#">Self-Care</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+254700123456">+254 700 123 456</a></li>
+                        <li><a href="mailto:hello@solus.ke">hello@solus.ke</a></li>
+                        <li><a href="#">123 Wellness Avenue</a></li>
+                        <li><a href="#">Nairobi, Kenya</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Solus Mental Wellness Platform. All rights reserved. | Licensed Mental Health Services in Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // FAQ toggle functionality
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-${index}`);
+            const question = answer.previousElementSibling;
+            const icon = question.querySelector('i');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-answer').forEach((item, i) => {
+                if (i !== index && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    const otherIcon = item.previousElementSibling.querySelector('i');
+                    otherIcon.classList.remove('fa-minus');
+                    otherIcon.classList.add('fa-plus');
+                }
+            });
+
+            // Toggle current FAQ item
+            answer.classList.toggle('active');
+            if (answer.classList.contains('active')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'white';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .wellbeing-card, .testimonial-card, .resource-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Contact form submission
+        document.querySelector('.message-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-button');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(`Thank you, ${name}! Your message has been received. We'll get back to you within 24 hours.`);
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
